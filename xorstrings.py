@@ -11,24 +11,26 @@
 
 import sys
 import argparse
+from binascii import hexlify
 
-def sxor(s1,s2):    
-    # convert strings to a list of character pair tuples
-    # go through each tuple, converting them to ASCII code (ord)
-    # perform exclusive or on the ASCII code
-    # then convert the result back to ASCII (chr)
-    # merge the resulting array of characters as a string
-    return ''.join(chr(ord(a) ^ ord(b)) for a,b in zip(s1,s2))
+def sxor(s1,s2):
+	return bytearray([x^y for x, y in zip(s1,s2)])
 
-parser = argparse.ArgumentParser(description='xorstrings is a utility which comes with cribdrag, the interactive crib dragging tool. xorstrings takes two ASCII hex encoded strings and XORs them together. This can be useful when cryptanalyzing ciphertext produced by the One Time Pad algorithm or a stream cipher when keys are reused, as one can XOR two ciphertexts together and then crib drag across the result, which is both plaintexts XORed together.')
+parser = argparse.ArgumentParser(description='''\
+xorstrings is a utility which comes with cribdrag, the interactive crib
+dragging tool. xorstrings takes two ASCII hex encoded strings and XORs them
+together. This can be useful when cryptanalyzing ciphertext produced by the
+One Time Pad algorithm or a stream cipher when keys are reused, as one can
+XOR two ciphertexts together and then crib drag across the result, which is
+both plaintexts XORed together.
+''')
 parser.add_argument('data1', help='Data encoded in an ASCII hex format (ie. ABC would be 414243)')
 parser.add_argument('data2', help='Data encoded in an ASCII hex format (ie. ABC would be 414243)')
 args = parser.parse_args()
 
-s1 = args.data1.decode('hex')
-s2 = args.data2.decode('hex')
+s1 = bytearray.fromhex(args.data1)
+s2 = bytearray.fromhex(args.data2)
 
 s3 = sxor(s1, s2)
 
-print s3.encode('hex')
-
+print hexlify(s3)

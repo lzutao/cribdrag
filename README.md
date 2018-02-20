@@ -1,41 +1,36 @@
-cribdrag
-Released after LOL Bitcoin party at DEF CON 21
-Daniel Crowley <dcrowley@trustwave.com>
-http://www.trustwave.com
+# cribdrag
 
-INTRODUCTION
-============
+Released after LOL Bitcoin party at DEFCON 21
 
-cribdrag is a script for performing crib dragging attacks against
+[Daniel Crowley](dcrowley@trustwave.com) in [TrustWave](http://www.trustwave.com)
+
+### INTRODUCTION
+
+`cribdrag` is a script for performing crib dragging attacks against
 ciphertext encrypted using an XOR operation with a predictable key.
 
 This script can be used to cryptanalyze:
 
-* One-Time Pad with reused key (XOR two ciphertexts together)
-* Any stream cipher with reused key (XOR two ciphertexts together)
-* Single character XOR
-* Multiple character XOR
+- One-Time Pad with reused key (XOR two ciphertexts together)
+- Any stream cipher with reused key (XOR two ciphertexts together)
+- Single character XOR
+- Multiple character XOR
 
-REQUIREMENTS
-============
-
+### REQUIREMENTS
 python 2.x
 
-USAGE
-=====
-
-~~~
+### USAGE
+```
 python xorstrings.py <ascii hex encoded data> <ascii hex encoded data>
 python cribdrag.py [-c charset] <ascii hex encoded ciphertext>
-~~~
+```
 
-COPYRIGHT
-=========
-
+### COPYRIGHT
+```
 cribdrag - Interactive crib dragging tool
 Daniel Crowley
-Copyright (C) 2013 Trustwave Holdings, Inc.
- 
+Copyright (C) 2018 Trustwave Holdings, Inc.
+
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
@@ -45,6 +40,7 @@ This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
- 
+
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>
+```
