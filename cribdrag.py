@@ -3,34 +3,33 @@
 ##########################
 # cribdrag - An interactive crib dragging tool
 # Daniel Crowley
-# Copyright (C) 2013 Trustwave Holdings, Inc.
+# Copyright (C) 2018 Trustwave Holdings, Inc.
 # This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 # This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 # You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
 ##########################
-
 
 import sys
 import re
 import argparse
 
 def sxor(ctext, ctext_len, crib, crib_len):
-    results = []
-    positions = ctext_len-crib_len+1
-    for index in xrange(positions):
-        single_result = bytearray()
-        for a,b in zip(ctext[index:index+crib_len], crib):
-            single_result.append(a ^ b)
-        results.append(single_result.decode("utf-8"))
-    return results
+	results = []
+	positions = ctext_len-crib_len+1
+	for index in xrange(positions):
+		single_result = bytearray()
+		for a,b in zip(ctext[index:index+crib_len], crib):
+			single_result.append(a ^ b)
+		results.append(single_result.decode("utf-8"))
+	return results
 
 
-def print_linewrapped(text, text_len, line_width=40):
-    for chunk in xrange(0,text_len,line_width):
-        if chunk > text_len-line_width:
-            print("%d\t%s"%(chunk, text[chunk:]))
-        else:
-            print("%d\t%s"%(chunk, text[chunk:chunk+line_width]))
+def print_linewrapped(text, text_len, width=40):
+	for chunk in xrange(0, text_len, width):
+		if chunk > (text_len - width):
+			print("%d\t%s"%(chunk, text[chunk:]))
+		else:
+			print("%d\t%s"%(chunk, text[chunk:chunk+width]))
 
 
 parser = argparse.ArgumentParser(description='''

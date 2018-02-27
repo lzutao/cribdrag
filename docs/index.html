@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="lzutao">
+    <meta name="keywords" content="crib dragging,crib drag,many time pad,one time pad,key reuse,OTP,cracking">
+
+    <title>The Interactive Crib Drag Solver</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+  </head>
+
+  <body>
+    <!-- Begin page content -->
+    <div class="container">
+      <div class="mt-1">
+        <h1>Interactive Crib Drag Solver</h1>
+      </div>
+      <p>The <a href="https://en.wikipedia.org/wiki/One-time_pad" target="_blank">one-time pad (OTP)</a> is a type of stream cipher that is a perfectly secure method of encryption. However, it also requires that the key never be used more than once.</p>
+      <p>There is a method called <a href="http://travisdazell.blogspot.hk/2012/11/many-time-pad-attack-crib-drag.html" target="_blank">crib dragging</a> that can uncover the plain-text of two messages that have been encrypted with the same key, without even knowing the key.</p>
+      </p>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Ciphertext 1 (Hex):</label>
+            <textarea class="form-control" rows="5" id="ctext1" onkeyup="on_ctext1_changed();" placeholder="Type the ciphertext 1" >3b101c091d53320c000910</textarea>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Ciphertext 2 (Hex):</label>
+            <textarea class="form-control" rows="5" id="ctext2" onkeyup="on_ctext2_changed();" placeholder="Type the ciphertext 2" >071d154502010a04000419</textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Your message is currently:</label>
+            <textarea class="form-control" rows="5" id="c_message" readonly></textarea>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Your key is currently:</label>
+            <textarea class="form-control" rows="5" id="c_key" readonly></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Please enter your crib:</label>
+            <textarea class="form-control" rows="2" id="crib" onkeyup="crib_change();" placeholder="Guess a word that might appear in one of the messages">the p</textarea>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <form class="form-inline">
+            <div class="form-group">
+              <label>Enter the correct position:</label>
+              <input type="number" class="form-control" id="index" onkeydown="if (event.which==13) {accept_crib(); event.preventDefault();} else return true;"></input>
+            </div>
+            <button class="btn btn-default" type="button" onclick="accept_crib();">Submit</button>
+          </form>
+          <div class="form-group">
+            <label>Choose a charset:</label>
+            <input type="text" class="form-control" id="charset" value="a-zA-Z0-9.,?! :;'&quot;"></input>
+          </div>
+        </div>
+      </div>
+
+      <label>Result: </label>
+      <div id="results">
+
+      </div>
+
+      <br>
+    </div>
+
+    <script type="text/javascript" src="script.js" type="application/javascript"></script>
+
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">Powered by Github</span>
+      </div>
+    </footer>
+
+  </body>
+</html>
