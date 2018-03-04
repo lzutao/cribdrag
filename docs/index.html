@@ -68,7 +68,7 @@
           <form class="form-inline">
             <div class="form-group">
               <label>Enter the correct position:</label>
-              <input type="number" class="form-control" id="index" onkeydown="if (event.which==13) {accept_crib(); event.preventDefault();} else return true;"></input>
+              <input type="number" min=0 class="form-control" id="index" onkeydown="if (event.which==13) {accept_crib(); event.preventDefault();} else return true;"></input>
             </div>
             <button class="btn btn-default" type="button" onclick="accept_crib();">Submit</button>
           </form>
